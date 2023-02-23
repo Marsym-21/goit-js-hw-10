@@ -1,7 +1,8 @@
 import './css/styles.css';
+import Notiflix from 'notiflix';
 import API from './fetchCountries';
-import debounce from 'lodash.debounce';
 import API2 from './prod-country-list';
+import debounce from 'lodash.debounce';
 
 const DEBOUNCE_DELAY = 300;
 const ref = {
@@ -22,5 +23,9 @@ function getValue(event) {
     .then(country => {
       API2.listCountryCard(country);
     })
-    .catch(error => console.log(error));
+    .catch(error => {
+      return Notiflix.Notify.failure(
+        'Oops, there is no country with that name'
+      );
+    });
 }

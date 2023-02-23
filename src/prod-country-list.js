@@ -1,9 +1,9 @@
+import Notiflix from 'notiflix';
 const countryList = document.querySelector('.country-list');
 const countryCard = document.querySelector('.country-info');
 function listCountryCard(country) {
   let listArray = [];
   country.forEach(element => {
-    console.log(element);
     const countryItem = document.createElement('li');
     countryItem.classList.add('item');
     countryItem.innerHTML = `
@@ -16,8 +16,15 @@ function listCountryCard(country) {
     } else {
       countryCard.innerHTML = '';
     }
+
     countryList.append(...listArray);
   });
+  if (listArray.length > 10) {
+    console.log('більше 10');
+    Notiflix.Notify.info(
+      'Too many matches found. Please enter a more specific name.'
+    );
+  }
 }
 
 export default { listCountryCard, countryList, countryCard };
