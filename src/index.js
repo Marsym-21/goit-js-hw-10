@@ -2,6 +2,7 @@ import './css/styles.css';
 import Notiflix from 'notiflix';
 import API from './fetchCountries';
 import API2 from './prod-country-list';
+import API4 from './if-list-equal1';
 import debounce from 'lodash.debounce';
 
 const DEBOUNCE_DELAY = 300;
@@ -15,7 +16,7 @@ ref.input.addEventListener('input', debounce(getValue, DEBOUNCE_DELAY));
 function getValue(event) {
   API2.countryList.innerHTML = '';
   if (event.target.value.trim() === '') {
-    API2.countryCard.innerHTML = '';
+    API4.countryCard.innerHTML = '';
     return;
   }
   const value = event.target.value;
